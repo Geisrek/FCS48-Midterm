@@ -7,16 +7,24 @@ Created on Thu Nov  9 20:39:35 2023
 import json
 class Browser:
     def __init__(self):
-        self
+        self.Opened_Tabs={}
+        self.error=0
     def jsonReader(self,url):
         output={}
         try:
             with open(url,'r') as file:
                 output=json.load(file)
-        except Exception as e:
-            output={'Errore':e}
+        except :
+            with open('./web/Errors.json','r') as file:
+                output=json.load(file)
         return output
     def openTab(self,title,url):
-        pass
+        New_Tab=self.jsonReader(url)
+        if title in New_Tab:
+            self.Opened_Tabs.update(New_Tab)
+        else:
+            self.error+=1
+            self.Opened_Tabs[f'Error{self.error}']=New_Tab
 browser=Browser()
-print(list(browser.jsonReader('./web/Youtube.json').keys()))
+browser.openTab('Youtube','./web/Youtbe.json' )
+print(browser.Opened_Tabs)
