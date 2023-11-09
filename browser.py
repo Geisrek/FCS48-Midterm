@@ -15,16 +15,20 @@ class Browser:
             with open(url,'r') as file:
                 output=json.load(file)
         except :
-            with open('./web/Errors.json','r') as file:
-                output=json.load(file)
+            try:
+                with open('./web/Errors.json','r') as file:
+                    output=json.load(file)
+            except:
+                output={"Error":"Invalid link"}
         return output
     def openTab(self,title,url):
         New_Tab=self.jsonReader(url)
-        if title in New_Tab:
+        if title.lower() == New_Tab['title'].lower():
+            New_Tab['Tabs']=[]
             self.Opened_Tabs.update(New_Tab)
         else:
             self.error+=1
             self.Opened_Tabs[f'Error{self.error}']=New_Tab
 browser=Browser()
-browser.openTab('Youtube','./web/Youtbe.json' )
+browser.openTab('Youtube','./web/Youtube.json' )
 print(browser.Opened_Tabs)
