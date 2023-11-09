@@ -19,4 +19,4 @@ class Browser:
     def openTab(self,title,url):
         pass
 browser=Browser()
-print(type(browser.jsonReader('./web/Youtube.json')))
+print(list(browser.jsonReader('./web/Youtube.json').keys()))
