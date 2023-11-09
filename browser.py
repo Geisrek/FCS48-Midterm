@@ -21,14 +21,18 @@ class Browser:
             except:
                 output={"Error":"Invalid link"}
         return output
+    def displayTab(self,tab):
+        tab=self.Opened_Tabs[tab]
+        for x in tab:
+            print(tab[x])
+    #O(n) 
     def openTab(self,title,url):
         New_Tab=self.jsonReader(url)
         if title.lower() == New_Tab['title'].lower():
             New_Tab['Tabs']=[]
-            self.Opened_Tabs.update(New_Tab)
+            self.Opened_Tabs[New_Tab['title']]=New_Tab
+            self.displayTab(New_Tab['title'])
         else:
             self.error+=1
             self.Opened_Tabs[f'Error{self.error}']=New_Tab
-browser=Browser()
-browser.openTab('Youtube','./web/Youtube.json' )
-print(browser.Opened_Tabs)
+            self.displayTab(f'Error{self.error}')
