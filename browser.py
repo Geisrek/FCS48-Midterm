@@ -74,10 +74,10 @@ class Browser:
     #O(1)
     def displayAll(self):
         for x in self.Opened_Tabs:
-            print(x,self.Opened_Tabs[x])
+            print(self.Opened_Tabs[x]['title'])
             Nested_Tabs=self.Opened_Tabs[x]['Tabs']
             for Y in Nested_Tabs:
-                print("--",Y)
+                print("--",Y['title'])
     #O(n^2)
     def openNestedTab(self,index):
         if len(self.Opened_Tabs) <1:
