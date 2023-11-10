@@ -37,7 +37,7 @@ class Browser:
             self.Opened_Tabs[f'Error{self.error}']=New_Tab
             self.displayTab(f'Error{self.error}')
     def closeTab(self,index=None):
-        if index==None:
+        if index==None or len(self.Opened_Tabs)<1:
             tabs=list(self.Opened_Tabs.keys())
             self.Opened_Tabs.pop(tabs[len(tabs)-1])
         tab=list(self.Opened_Tabs.keys())[index]
