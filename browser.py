@@ -49,6 +49,14 @@ class Browser:
                 if tab in x:
                     self.Opened_Tabs.pop(x)
     #O(n)
-    #def swichTab(self,index):
+    def swichTab(self,index):
+        if len(self.Opened_Tabs) <1 or index>len(self.Opened_Tabs)-1:
+            return
+        elif index==None or len(self.Opened_Tabs)>1:
+            tabs=list(self.Opened_Tabs.keys())
+            self.displayTab(tabs[len(tabs)-1])
+        else:
+            tabs=list(self.Opened_Tabs.keys())
+            self.displayTab(tabs[index])
         
         
