@@ -36,6 +36,7 @@ class Browser:
             self.error+=1
             self.Opened_Tabs[f'Error{self.error}']=New_Tab
             self.displayTab(f'Error{self.error}')
+        print(self.Opened_Tabs)
     #O(1)
     def closeTab(self,index=None):
         if len(self.Opened_Tabs) <1:
@@ -51,6 +52,7 @@ class Browser:
     #O(n)
     def swichTab(self,index):
         if len(self.Opened_Tabs) <1 or index>len(self.Opened_Tabs)-1:
+            print('1',len(self.Opened_Tabs))
             return
         elif index==None or len(self.Opened_Tabs)>1:
             tabs=list(self.Opened_Tabs.keys())
