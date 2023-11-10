@@ -25,7 +25,7 @@ def main():
         browser.swichTab(index)
         main()
     elif option==4:
-        ######
+        browser.displayAll()
         main()
     elif option==5:
         ######
