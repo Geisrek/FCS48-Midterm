@@ -61,5 +61,6 @@ class Browser:
     #O(1)
     def displayAll(self):
         for x in self.Opened_Tabs:
-            self.displayTab(x)
+            print(self.Opened_Tabs[x]['title'])
     #O(n^2)
+    #def openNestedTab
