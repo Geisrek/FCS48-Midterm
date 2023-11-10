@@ -28,7 +28,9 @@ def main():
         browser.displayAll()
         main()
     elif option==5:
-        ######
+        index=int(input('Enter the tab index'))
+        Tab={'title':input("Enter the title:"),'content':input("Enter content:")}
+        
         main()
     elif option==6:
         ######
