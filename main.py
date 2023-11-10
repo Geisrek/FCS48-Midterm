@@ -29,11 +29,10 @@ def main():
         main()
     elif option==5:
         index=int(input('Enter the tab index'))
-        Tab={'title':input("Enter the title:"),'content':input("Enter content:")}
-        browser.openNestedTab(Tab,index)
+        browser.openNestedTab(index)
         main()
     elif option==6:
-        ######
+        browser.clareAllTabs()
         main()
     elif option==7:
         ######
