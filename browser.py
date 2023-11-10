@@ -39,7 +39,7 @@ class Browser:
     #O(n) 
     def openTab(self,title,url):
         New_Tab=self.urlReader(url)
-        self.Opened_Tabs[title]={'title':title,'content':New_Tab,'Tabs':[]}
+        self.Opened_Tabs[title]={'title':title,'url':url,'content':New_Tab,'Tabs':[]}
         print(self.Opened_Tabs[title]['content'])
     #O(1)
     def closeTab(self,index=None):
@@ -65,26 +65,29 @@ class Browser:
     def swichTab(self,index):
         if len(self.Opened_Tabs) <1 or index>len(self.Opened_Tabs)-1:
             return
-        elif index==None or len(self.Opened_Tabs)>1:
-            tabs=list(self.Opened_Tabs.keys())
-            self.displayTab(tabs[len(tabs)-1])
-        else:
-            tabs=list(self.Opened_Tabs.keys())
-            self.displayTab("--",tabs[index])
-    #O(1)
+        title=list(self.Opened_Tabs.keys())[index]
+        tab=self.Opened_Tabs[title]
+        print(tab['title'],'\n',tab['content'])
+        for x in tab['Tabs']:
+           print(x['title'],'\n',x['content']) 
+    #O(n)
     def displayAll(self):
         for x in self.Opened_Tabs:
             print(self.Opened_Tabs[x]['title'])
-            Nested_Tabs=self.Opened_Tabs[x]['Tabs']
-            for Y in Nested_Tabs:
-                print("--",Y['title'])
+            if 'Tabs' in list(self.Opened_Tabs[x].keys()):
+                Nested_Tabs=self.Opened_Tabs[x]['Tabs']
+                print(Nested_Tabs)
+                for Y in Nested_Tabs:
+                    print("--",Y)
     #O(n^2)
     def openNestedTab(self,index):
         if len(self.Opened_Tabs) <1:
             print('No Tabe to nest')
             return
         Parent_Tab=list(self.Opened_Tabs.keys())[index]
-        tab=Tab={'title':f'{Parent_Tab}/{input("Enter the title:")}','content':input("Enter content:"),"Tabs":[]}
+        childe=f'{self.Opened_Tabs[Parent_Tab]["url"]}/{input("wich tab you want to open:")}'
+        content=self.urlReader(childe)
+        tab=Tab={'title':f'{Parent_Tab}/{input("Enter the title:")}','url':childe,'content':content,"Tabs":[]}
         print(Parent_Tab)
         self.Opened_Tabs[Parent_Tab]['Tabs'].append(tab['title'])
         self.Opened_Tabs[tab['title']]=tab
