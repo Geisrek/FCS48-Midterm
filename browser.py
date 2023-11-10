@@ -36,3 +36,14 @@ class Browser:
             self.error+=1
             self.Opened_Tabs[f'Error{self.error}']=New_Tab
             self.displayTab(f'Error{self.error}')
+    def closeTab(self,index=None):
+        if index==None:
+            tabs=list(self.Opened_Tabs.keys())
+            self.Opened_Tabs.pop(tabs[len(tabs)-1])
+        tab=list(self.Opened_Tabs.keys())[index]
+        for x in self.Opened_Tabs:
+            if tab in x:
+                self.Opened_Tabs.pop(x)
+    #def swichTab(self,index):
+        
+        

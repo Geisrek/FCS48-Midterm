@@ -15,7 +15,8 @@ def main():
         browser.openTab(title, url)
         main()
     elif option==2:
-        ######
+        index=int(input("Enter the tab index you want to close:"))
+        browser.closeTab(index)
         main()
     elif option==3:
         ######
