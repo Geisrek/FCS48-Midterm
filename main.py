@@ -30,7 +30,7 @@ def main():
     elif option==5:
         index=int(input('Enter the tab index'))
         Tab={'title':input("Enter the title:"),'content':input("Enter content:")}
-        
+        browser.openNestedTab(Tab,index)
         main()
     elif option==6:
         ######

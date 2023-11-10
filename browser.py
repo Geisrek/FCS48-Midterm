@@ -64,8 +64,9 @@ class Browser:
             print(self.Opened_Tabs[x]['title'])
             Nested_Tabs=self.Opened_Tabs[x]['Tabs']
             for Y in Nested_Tabs:
-                print(Y)
+                print(Y['title'])
     #O(n^2)
-    def openNestedTab(tab,index):
+    def openNestedTab(self,tab,index):
         Parent_Tab=list(self.Opened_Tabs.keys())[index]
         self.Opened_Tabs[Parent_Tab]['Tabs'].append(tab)
+    #O(1)
