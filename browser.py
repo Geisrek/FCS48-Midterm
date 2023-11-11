@@ -57,14 +57,23 @@ class Browser:
             self.Opened_Tabs.pop(tab)
     #O(1)
     def swichTab(self,index):
-        if index==None or index>len(self.Opened_Tabs)-1:
+        if index!=None and index>len(self.Opened_Tabs)-1:
             return
-        title=list(self.Opened_Tabs.keys())[index]
-        tab=self.Opened_Tabs[title]
-        print(tab['title'],'\n',tab['content'])
-        if 'Tabs' in list(self.Opened_Tabs[title].keys()):
-            for x in tab['Tabs']:
-               print(x['title'],'\n',x['content']) 
+        elif index==None :
+            tabs=list(self.Opened_Tabs.keys())
+            title=tabs[len(tabs)-1]
+            tab=self.Opened_Tabs[title]
+            print(tab['title'],'\n',tab['content'])
+            if 'Tabs' in list(self.Opened_Tabs[title].keys()):
+                for x in tab['Tabs']:
+                   print(x['title'],'\n',x['content']) 
+        else:
+            title=list(self.Opened_Tabs.keys())[index]
+            tab=self.Opened_Tabs[title]
+            print(tab['title'],'\n',tab['content'])
+            if 'Tabs' in list(self.Opened_Tabs[title].keys()):
+                for x in tab['Tabs']:
+                   print(x['title'],'\n',x['content']) 
     #O(n)
     def displayAll(self):
         for x in self.Opened_Tabs:
