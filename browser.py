@@ -68,15 +68,15 @@ class Browser:
         title=list(self.Opened_Tabs.keys())[index]
         tab=self.Opened_Tabs[title]
         print(tab['title'],'\n',tab['content'])
-        for x in tab['Tabs']:
-           print(x['title'],'\n',x['content']) 
+        if 'Tabs' in list(self.Opened_Tabs[title].keys()):
+            for x in tab['Tabs']:
+               print(x['title'],'\n',x['content']) 
     #O(n)
     def displayAll(self):
         for x in self.Opened_Tabs:
             print(self.Opened_Tabs[x]['title'])
             if 'Tabs' in list(self.Opened_Tabs[x].keys()):
                 Nested_Tabs=self.Opened_Tabs[x]['Tabs']
-                print(Nested_Tabs)
                 for Y in Nested_Tabs:
                     print("--",Y)
     #O(n^2)
@@ -87,7 +87,7 @@ class Browser:
         Parent_Tab=list(self.Opened_Tabs.keys())[index]
         childe=f'{self.Opened_Tabs[Parent_Tab]["url"]}/{input("wich tab you want to open:")}'
         content=self.urlReader(childe)
-        tab=Tab={'title':f'{Parent_Tab}/{input("Enter the title:")}','url':childe,'content':content,"Tabs":[]}
+        tab=Tab={'title':f'{Parent_Tab}/{input("Enter the title:")}','url':childe,'content':content}
         print(Parent_Tab)
         self.Opened_Tabs[Parent_Tab]['Tabs'].append(tab['title'])
         self.Opened_Tabs[tab['title']]=tab
