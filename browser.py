@@ -38,9 +38,13 @@ class Browser:
             print(tab[x])
     #O(n) 
     def openTab(self,title,url):
-        New_Tab=self.urlReader(url)
-        self.Opened_Tabs[title]={'title':title,'url':url,'content':New_Tab,'Tabs':[]}
-        print(self.Opened_Tabs[title]['content'])
+        print(url[:11])
+        if (url[:12]=='https://www.' or url[:11]=='http://www.') and '.' in url[12:]:
+            New_Tab=self.urlReader(url)
+            self.Opened_Tabs[title]={'title':title,'url':url,'content':New_Tab,'Tabs':[]}
+            print(self.Opened_Tabs[title]['content'])
+        else:
+            print("Unvalid linke")
     #O(1)
     def closeTab(self,index=None):
         if len(self.Opened_Tabs) <1:

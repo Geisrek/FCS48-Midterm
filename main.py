@@ -20,7 +20,7 @@ def main():
         browser.closeTab(index)
         main()
     elif option==3:
-        index=input("Enter the tab index you want to close:")
+        index=input("Enter the tab index you want to swich:")
         index= int(index) if index !='' else None
         browser.swichTab(index)
         main()
