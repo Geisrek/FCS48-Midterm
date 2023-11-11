@@ -4,8 +4,7 @@ Created on Thu Nov  9 20:39:35 2023
 
 @author: USER
 """
-import json
-import requests
+import json,os,requests
 """response=requests.get('https://www.sefactory.io/')
 if response.status_code==200:
     print(response.text[:response.text.find('</title>')])"""
@@ -80,8 +79,8 @@ class Browser:
             print(self.Opened_Tabs[x]['title'])
             if 'Tabs' in list(self.Opened_Tabs[x].keys()):
                 Nested_Tabs=self.Opened_Tabs[x]['Tabs']
-                for Y in Nested_Tabs:
-                    print("--",Y['title'])
+                for tab in Nested_Tabs:
+                    print("--",tab['title'])
     #O(n^2)
     def openNestedTab(self,index):
         if len(self.Opened_Tabs) <1:
@@ -98,4 +97,20 @@ class Browser:
     def clareAllTabs(self):
         self.Opened_Tabs={}
     #O(1)
-    
+    def saveTabs(self,path):
+        Path=f'web/{path}'
+        if os.path.exists(Path):
+            file_content=self.jsonReader(Path)
+            file_content.update(self.Opened_Tabs)
+            try:
+                with open(Path, 'w') as json_file:
+                     json.dump(file_content,json_file, indent=2)
+            except:
+                print("Some think went wrong :(")
+        else:
+            try:
+                with open(Path, 'w') as json_file:
+                     json.dump(self.Opened_Tabs,json_file, indent=2)
+            except:
+                print("Some think went wrong :(")
+            

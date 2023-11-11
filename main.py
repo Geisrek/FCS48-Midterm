@@ -35,7 +35,8 @@ def main():
         browser.clareAllTabs()
         main()
     elif option==7:
-        ######
+        path=input('Enter the path :')
+        browser.saveTabs(path)
         main()
     elif option==8:
         ######
