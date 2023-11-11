@@ -113,4 +113,14 @@ class Browser:
                      json.dump(self.Opened_Tabs,json_file, indent=2)
             except:
                 print("Some think went wrong :(")
-            
+    def importTabs(self,path):
+        Path=f'web/{path}'
+        Tabs=self.jsonReader(Path)
+        print(type(Tabs))
+        for x in Tabs:
+            print(Tabs[x]['title'],'\n',Tabs[x]['url'],'\n',Tabs[x]['content'])
+            Nested_Tabs=Tabs[x]['Tabs']
+            for tab in Nested_Tabs:
+                    print("--",tab['title'],'\n--',tab['url'],'\n--',tab['content'])
+browser=Browser()
+browser.importTabs('MyTabs.json')
