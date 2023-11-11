@@ -46,21 +46,12 @@ class Browser:
         if len(self.Opened_Tabs) <1:
             return
         elif index==None :
-            tabs=list(self.Opened_Tabs.keys())
-            Removed_item=self.Opened_Tabs.pop(tabs[len(tabs)-1])
-            if Removed_item['title'].find('/')!=-1:
-               Is_Nested=Removed_item['title'].find('/')
-               self.Opened_Tabs[Removed_item['title'][:Is_Nested]]['Tabs'].remove(Removed_item['title'])
+            tab=list(self.Opened_Tabs.keys())
+            self.Opened_Tabs.pop(tab[len(tab)-1])
         else:
             tab=list(self.Opened_Tabs.keys())[index]
-            Removed_item=self.Opened_Tabs[tab]['title']
-            self.Opened_Tabs.pop(self.Opened_Tabs[tab])
-            for x in self.Opened_Tabs:
-                if tab in x:
-                    self.Opened_Tabs.pop(x)
-                if Removed_item['title'].find('/')!=-1:   
-                   Is_Nested=Removed_item['title'].find('/')
-                   self.Opened_Tabs[Removed_item['title'][:Is_Nested]]['Tabs'].remove(Removed_item['title'])
+            self.Opened_Tabs.pop(tab)
+        print(self.Opened_Tabs)
     #O(n)
     def swichTab(self,index):
         if len(self.Opened_Tabs) <1 or index>len(self.Opened_Tabs)-1:
