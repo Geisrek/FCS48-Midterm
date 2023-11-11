@@ -39,7 +39,8 @@ def main():
         browser.saveTabs(path)
         main()
     elif option==8:
-        ######
+        path=input('Enter the path :')
+        browser.importTabs(path)
         main()
     elif option==9:
         return

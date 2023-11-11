@@ -122,5 +122,3 @@ class Browser:
             Nested_Tabs=Tabs[x]['Tabs']
             for tab in Nested_Tabs:
                     print("--",tab['title'],'\n--',tab['url'],'\n--',tab['content'])
-browser=Browser()
-browser.importTabs('MyTabs.json')
