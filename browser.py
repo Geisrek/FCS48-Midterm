@@ -5,9 +5,6 @@ Created on Thu Nov  9 20:39:35 2023
 @author: USER
 """
 import json,os,requests
-"""response=requests.get('https://www.sefactory.io/')
-if response.status_code==200:
-    print(response.text[:response.text.find('</title>')])"""
 class Browser:
     def __init__(self):
         self.Opened_Tabs={}
@@ -37,7 +34,6 @@ class Browser:
             print(tab[x])
     #O(n) 
     def openTab(self,title,url):
-        print(url[:11])
         if (url[:12]=='https://www.' or url[:11]=='http://www.') and '.' in url[12:]:
             New_Tab=self.urlReader(url)
             self.Opened_Tabs[title]={'title':title,'url':url,'content':New_Tab,'Tabs':[]}
