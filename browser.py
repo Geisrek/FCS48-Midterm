@@ -51,10 +51,9 @@ class Browser:
         else:
             tab=list(self.Opened_Tabs.keys())[index]
             self.Opened_Tabs.pop(tab)
-        print(self.Opened_Tabs)
-    #O(n)
+    #O(1)
     def swichTab(self,index):
-        if len(self.Opened_Tabs) <1 or index>len(self.Opened_Tabs)-1:
+        if index==None or index>len(self.Opened_Tabs)-1:
             return
         title=list(self.Opened_Tabs.keys())[index]
         tab=self.Opened_Tabs[title]
