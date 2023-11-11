@@ -78,19 +78,19 @@ class Browser:
             if 'Tabs' in list(self.Opened_Tabs[x].keys()):
                 Nested_Tabs=self.Opened_Tabs[x]['Tabs']
                 for Y in Nested_Tabs:
-                    print("--",Y)
+                    print("--",Y['title'])
     #O(n^2)
     def openNestedTab(self,index):
         if len(self.Opened_Tabs) <1:
             print('No Tabe to nest')
             return
         Parent_Tab=list(self.Opened_Tabs.keys())[index]
-        childe=f'{self.Opened_Tabs[Parent_Tab]["url"]}/{input("wich tab you want to open:")}'
+        Nested_Tab_Name=input("wich tab you want to open:")
+        childe=f'{self.Opened_Tabs[Parent_Tab]["url"]}/{Nested_Tab_Name}'
         content=self.urlReader(childe)
-        tab=Tab={'title':f'{Parent_Tab}/{input("Enter the title:")}','url':childe,'content':content}
-        print(Parent_Tab)
-        self.Opened_Tabs[Parent_Tab]['Tabs'].append(tab['title'])
-        self.Opened_Tabs[tab['title']]=tab
+        tab={'title':f'{Nested_Tab_Name}','url':childe,'content':content}
+        print(tab)
+        self.Opened_Tabs[Parent_Tab]['Tabs'].append(tab)
     #O(1)
     def clareAllTabs(self):
         self.Opened_Tabs={}
