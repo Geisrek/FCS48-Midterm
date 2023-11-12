@@ -108,6 +108,7 @@ class Browser:
                      json.dump(self.Opened_Tabs,json_file, indent=2)
             except:
                 print("Some think went wrong :(")
+    #O(1)
     def importTabs(self,path):
         Path=f'web/{path}'
         Tabs=self.jsonReader(Path)
@@ -118,4 +119,5 @@ class Browser:
                 for tab in Nested_Tabs:
                         print("--",tab['title'],'\n--',tab['url'],'\n--',tab['content'])
         else:
-             print('Path not exist')
+             print(Tabs['ERROR'])
+    #O(1)
