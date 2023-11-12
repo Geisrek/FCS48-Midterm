@@ -8,7 +8,6 @@ import json,os,requests
 class Browser:
     def __init__(self):
         self.Opened_Tabs={}
-        self.error=0
     def jsonReader(self,url):
         output={}
         try:
@@ -112,9 +111,11 @@ class Browser:
     def importTabs(self,path):
         Path=f'web/{path}'
         Tabs=self.jsonReader(Path)
-        print(type(Tabs))
-        for x in Tabs:
-            print(Tabs[x]['title'],'\n',Tabs[x]['url'],'\n',Tabs[x]['content'])
-            Nested_Tabs=Tabs[x]['Tabs']
-            for tab in Nested_Tabs:
-                    print("--",tab['title'],'\n--',tab['url'],'\n--',tab['content'])
+        if not 'ERROR' in Tabs:
+            for x in Tabs:
+                print(Tabs[x]['title'],'\n',Tabs[x]['url'],'\n',Tabs[x]['content'])
+                Nested_Tabs=Tabs[x]['Tabs']
+                for tab in Nested_Tabs:
+                        print("--",tab['title'],'\n--',tab['url'],'\n--',tab['content'])
+        else:
+             print('Path not exist')
